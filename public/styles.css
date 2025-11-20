@@ -1,0 +1,172 @@
+/* Global Styles */
+:root {
+    --color-background: #121212;
+    --color-surface: #1e1e1e;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b0b0b0;
+    --color-accent: #ff4081; /* A vibrant pink/magenta for a modern look */
+    --color-border: #333333;
+    --color-note-bg: #2a2a2a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--color-surface);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+nav a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-text-primary);
+}
+
+nav a.active {
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 5px;
+}
+
+/* Main Content */
+main {
+    padding: 40px 0;
+}
+
+.rules-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.rules-header h2 {
+    font-size: 2.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 10px;
+}
+
+.rules-header .subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 30px;
+}
+
+.note-box {
+    background-color: var(--color-note-bg);
+    border-left: 5px solid var(--color-accent);
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.note-box p {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+
+.note-box strong {
+    color: var(--color-accent);
+}
+
+/* Rules List */
+.rules-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.rule-card {
+    background-color: var(--color-surface);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.rule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.rule-card h3 {
+    color: var(--color-accent);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 10px;
+}
+
+.rule-card p {
+    color: var(--color-text-secondary);
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-surface);
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+    margin-top: 40px;
+}
+
+footer p {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .rules-header h2 {
+        font-size: 2rem;
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+}

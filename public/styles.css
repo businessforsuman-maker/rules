@@ -43,7 +43,13 @@ nav a.active { color: var(--color-primary); border-bottom: 2px solid var(--color
 .subtitle { font-size: 1.3rem; color: var(--color-text-secondary); margin-bottom: 50px; }
 .stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; margin: 50px 0; }
 .stat h3 { font-size: 2.5rem; color: var(--color-accent); }
-.quick-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 60px; }
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
 .quick-links .card {
     background: var(--color-surface-2);
     padding: 40px;
@@ -52,10 +58,25 @@ nav a.active { color: var(--color-primary); border-bottom: 2px solid var(--color
     text-decoration: none;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid var(--color-border);
+    color: inherit;                    /* ← this fixes 90% of cases */
+    display: block;
 }
-.quick-links .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-.quick-links .card h3 { color: var(--color-primary); margin-bottom: 12px; font-size: 1.5rem; }
-.quick-links .card p { color: var(--color-accent);}
+
+.quick-links .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.quick-links .card h3 {
+    color: var(--color-primary);
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+}
+
+.quick-links .card p {
+    color: var(--color-accent);        /* ← now works perfectly */
+    margin: 0;
+}
 
 /* Rules Page */
 .rules-header h2 { font-size: 2.8rem; text-align: center; margin-bottom: 16px; }

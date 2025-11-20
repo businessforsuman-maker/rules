@@ -5,18 +5,48 @@
     --color-primary: #34d399;            /* Emerald Green */
     --color-accent: #fb923c;             /* Vibrant Orange */
     --color-accent-light: #c084fc;       /* Light Purple */
+    --color-link: #fef08a;               /* BRIGHT YELLOW – super visible */
+    --color-link-hover: #fde047;         /* Slightly darker yellow on hover */
     --color-text-primary: #f1f5f9;
     --color-text-secondary: #94a3b8;
     --color-border: #2d3748;
     --color-note-bg: #1e293b;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--color-background); color: var(--color-text-primary); line-height: 1.6; }
-
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+}
+a {
+    color: var(--color-link) !important;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+a:hover {
+    color: var(--color-link-hover) !important;
+    text-decoration: underline;
+}
+nav a,
+nav a:hover,
+nav a.active {
+    color: var(--color-text-secondary) !important;
+    text-decoration: none !important;
+}
+nav a:hover,
+nav a.active {
+    color: var(--color-primary) !important;
+}
+.quick-links .card p { color: var(--color-accent) !important; }
+.quick-links .card h3 { color: var(--color-primary) !important; }
+.faq-item summary { color: var(--color-accent-light) !important; }
+.comment-rules-note a,
+.note-box a {
+    color: var(--color-link) !important;
+}
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* Header */
 header {
     background: var(--color-surface);
     padding: 20px 0;
@@ -27,19 +57,14 @@ header {
 }
 header .container { display: flex; justify-content: space-between; align-items: center; }
 .logo img { height: 40px; }
-nav a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    margin-left: 30px;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-nav a:hover { color: var(--color-primary); }
-nav a.active { color: var(--color-primary); border-bottom: 2px solid var(--color-primary); padding-bottom: 5px; }
-
-/* Hero / Home */
 .hero { padding: 80px 0; text-align: center; }
-.hero h1 { font-size: 3rem; margin-bottom: 16px; background: linear-gradient(90deg, var(--color-primary), var(--color-accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .subtitle { font-size: 1.3rem; color: var(--color-text-secondary); margin-bottom: 50px; }
 .stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; margin: 50px 0; }
 .stat h3 { font-size: 2.5rem; color: var(--color-accent); }
@@ -49,7 +74,6 @@ nav a.active { color: var(--color-primary); border-bottom: 2px solid var(--color
     gap: 30px;
     margin-top: 60px;
 }
-
 .quick-links .card {
     background: var(--color-surface-2);
     padding: 40px;
@@ -58,27 +82,15 @@ nav a.active { color: var(--color-primary); border-bottom: 2px solid var(--color
     text-decoration: none;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid var(--color-border);
-    color: inherit;                    /* ← this fixes 90% of cases */
+    color: inherit;
     display: block;
 }
-
 .quick-links .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
-
-.quick-links .card h3 {
-    color: var(--color-primary);
-    margin-bottom: 12px;
-    font-size: 1.5rem;
-}
-
-.quick-links .card p {
-    color: var(--color-accent);        /* ← now works perfectly */
-    margin: 0;
-}
-
-/* Rules Page */
+.quick-links .card h3 { color: var(--color-primary); margin-bottom: 12px; font-size: 1.5rem; }
+.quick-links .card p { color: var(--color-accent); margin: 0; }
 .rules-header h2 { font-size: 2.8rem; text-align: center; margin-bottom: 16px; }
 .rules-header .subtitle { text-align: center; color: var(--color-text-secondary); font-size: 1.2rem; }
 .note-box {
@@ -90,7 +102,6 @@ nav a.active { color: var(--color-primary); border-bottom: 2px solid var(--color
     margin: 40px auto;
 }
 .note-box strong { color: var(--color-accent); }
-
 .rules-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -112,9 +123,8 @@ nav a.active { color: var(--color-primary); border-bottom: 2px solid var(--color
     padding-bottom: 10px;
     border-bottom: 1px solid var(--color-border);
 }
-.rule-card p { color: var(--color-text-secondary); }
-
-/* FAQ Page */
+.rule-card p,
+.rule-card ul { color: var(--color-text-secondary); margin-top: 12px; }
 .faq { padding: 60px 0; }
 .faq h2 { font-size: 2.8rem; text-align: center; margin-bottom: 50px; color: var(--color-primary); }
 .faq-list { max-width: 900px; margin: 0 auto; }
@@ -138,8 +148,6 @@ nav a.active { color: var(--color-primary); border-bottom: 2px solid var(--color
     color: var(--color-text-secondary);
     background: var(--color-surface);
 }
-
-/* Footer */
 footer {
     background: var(--color-surface);
     padding: 30px 0;
@@ -149,8 +157,6 @@ footer {
     color: var(--color-text-secondary);
     font-size: 0.9rem;
 }
-
-/* Responsive */
 @media (max-width: 768px) {
     nav { margin-top: 15px; }
     nav a { margin: 0 12px; font-size: 0.95rem; }

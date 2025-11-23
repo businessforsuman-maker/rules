@@ -1,64 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9Anime - Our Little Corner of the Internet</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/favicon.webp" type="image/webp">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b0f14">
+  <link rel="icon" href="/favicon.webp" type="image/webp" />
+  <title>9anime — Comment Rules</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --muted:#9aa6b2;
+      --accent:#7c3aed;
+      --glass:rgba(255,255,255,0.02);
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#071018 140%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .wrap{max-width:980px;width:100%}
+    header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .logo{width:56px;height:56px;flex:0 0 56px;border-radius:12px;overflow:hidden;background:var(--glass);display:flex;align-items:center;justify-content:center}
+    .logo img{width:100%;height:100%;object-fit:contain;display:block}
+    h1{font-size:20px;margin:0}
+    .sub{color:var(--muted);font-size:13px}
+
+    main{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:var(--radius);padding:22px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+
+    .card{background:linear-gradient(180deg,transparent,rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .rules{line-height:1.5}
+    .section-title{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .pill{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+
+    ul{padding-left:18px;margin:8px 0}
+    li{margin:8px 0}
+    .examples{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;font-size:14px;color:#cfe8ff}
+    .bad{color:#ffb4b4}
+    .good{color:#b6ffcf}
+
+    .meta{font-size:13px;color:var(--muted);margin-top:14px}
+    .report{display:flex;flex-direction:column;gap:8px}
+    .btn{display:inline-block;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#5b21b6);color:white;text-decoration:none;font-weight:600;box-shadow:0 6px 20px rgba(124,58,237,0.12)}
+
+    footer{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px}
+
+    /* table of contents */
+    nav.toc{position:sticky;top:20px}
+    @media (max-width:880px){nav.toc{position:static}}
+    nav.toc ul{list-style:none;padding:0;margin:0}
+    nav.toc li{margin:8px 0}
+    nav.toc a{color:var(--muted);text-decoration:none;font-size:13px}
+    nav.toc a:hover{color:var(--accent)}
+
+    .searchable{display:flex;gap:8px;align-items:center}
+    .searchable input{flex:1;background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;color:inherit}
+
+    /* accessibility */
+    a:focus{outline:3px solid rgba(124,58,237,0.18);outline-offset:3px}
+  </style>
 </head>
 <body>
+  <div class="wrap">
     <header>
-        <div class="container">
-            <a href="/" class="logo">
-                <img src="/9anime.png" alt="9Anime Logo" height="40">
-            </a>
-            <nav>
-                <a href="/" class="active"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="rules.html"><i class="fa-solid fa-comment"></i> Comment Rules</a>
-                <a href="faq.html"><i class="fa-solid fa-circle-question"></i> FAQs & Answers!</a>
-            </nav>
-        </div>
+      <div class="logo" aria-hidden="true">
+        <img src="/9anime.png" alt="9anime logo" />
+      </div>
+      <div>
+        <h1>9anime — Comment Rules</h1>
+        <div class="sub">A short, clear policy for comments and community behaviour</div>
+      </div>
     </header>
 
-    <main class="container hero">
-        <section class="welcome">
-            <h1>Seriously, Welcome to the 9Anime Crew!</h1>
-            <p class="subtitle">This is our chill, spoiler-safe zone. A place where we can all geek out about anime without the drama. Let's keep the good vibes flowing, worldwide.</p>
-            <div class="stats">
-                <div class="stat">
-                    <h3>Half a Million+</h3>
-                    <p>Fellow Fans (and growing!)</p>
-                </div>
-                <div class="stat">
-                    <h3>Always On</h3>
-                    <p>Our Mods Are Watching (in a good way)</p>
-                </div>
-                <div class="stat">
-                    <h3>Zero</h3>
-                    <p>Patience for Jerks. Be Cool.</p>
-                </div>
+    <main>
+      <div class="grid">
+        <div>
+          <section class="card rules" id="rules">
+            <div class="section-title">
+              <span class="pill">Core Rules</span>
             </div>
-        </section>
 
-        <section class="quick-links">
-            <a href="rules.html" class="card">
-                <h3>The Community Vibe Check</h3>
-                <p>Seriously, read this first. It's how we keep things fun, healthy, and not a total mess.</p>
-            </a>
-            <a href="faq.html" class="card">
-                <h3>All the Burning Questions</h3>
-                <p>Wondering about commenting, why someone got banned, or just how things work? We got you.</p>
-            </a>
-        </section>
-    </main>
+            <ol>
+              <li><strong>Be respectful.</strong> No insults, slurs, targeted harassment, or hate speech. Disagreements are fine — personal attacks are not.</li>
+              <li><strong>No piracy links or requests.</strong> Do not post links to pirated content, torrent files, streaming redirects, or ask for illegal downloads.</li>
+              <li><strong>No spoilers without warning.</strong> Use the spoiler toggle or include a clear spoiler label with episode/chapter details.</li>
+              <li><strong>Keep it on-topic.</strong> Comments should relate to the page’s anime or episode. Off-topic spam, captcha messages, and repetitive one-word posts will be removed.</li>
+              <li><strong>No doxxing or personal data.</strong> Do not post private contact details or attempt to reveal someone’s identity.</li>
+              <li><strong>No sexual content involving minors.</strong> Sexual content is restricted to consenting adults and must follow local law. Anything sexual that involves underage characters or real minors is banned.</li>
+              <li><strong>No illegal instructions or malicious activity.</strong> Do not post instructions for hacking, malware, or other illegal activity.</li>
+            </ol>
 
-    <footer>
-        <div class="container">
-            <p>Made with love by the 9Anime Community. © 2025. All rights reserved (mostly).</p>
+            <h3 style="margin-top:14px">Examples</h3>
+            <div class="examples">
+              <div><strong class="good">Allowed:</strong> "This episode had amazing animation — the fight choreography was top tier."</div>
+              <div class="bad"><strong>Not allowed:</strong> "You're stupid and should kill yourself" — removed for harassment.</div>
+              <div class="bad"><strong>Not allowed:</strong> Links to external sites that host pirated content.</div>
+            </div>
+
+            <h3 style="margin-top:14px">Spoiler Rules</h3>
+            <ul>
+              <li>Use a clear warning: "SPOILER: Episode 12 plot details below".</li>
+              <li>On episode/scene pages, assume readers are caught up — hide major reveals for at least 2 weeks after release.</li>
+            </ul>
+
+            <h3 style="margin-top:14px">Posting Etiquette</h3>
+            <ul>
+              <li>Search existing comments before posting to avoid duplicates.</li>
+              <li>Keep language clear; avoid ALL CAPS or excessive emoji.</li>
+              <li>When quoting, attribute the source and keep quotes short.</li>
+            </ul>
+
+            <h3 style="margin-top:14px">Moderation & Consequences</h3>
+            <ul>
+              <li>Moderators may edit or remove comments that break rules.</li>
+              <li>Repeat offenders may receive temporary or permanent bans.</li>
+              <li>In severe cases (threats, doxxing), we may share information with law enforcement.</li>
+            </ul>
+
+            <p class="meta">Last updated: <span class="mono">Nov 23, 2025</span></p>
+          </section>
+
+          <section class="card" style="margin-top:14px" id="how-to-report">
+            <div class="section-title"><span class="pill">How to report</span></div>
+            <p class="muted">If you see a rule-breaking comment, please use the report button next to the comment. Include a short reason — e.g., "Harassment", "Piracy link", or "Spoiler without warning".</p>
+            <div class="report">
+              <a class="btn" href="/report">Report a comment</a>
+              <div class="meta">If the issue is an immediate threat, contact local authorities. For account or moderation questions: <a href="mailto:admin@9anime.example" class="muted">admin@9anime.example</a></div>
+            </div>
+          </section>
         </div>
-    </footer>
+
+        <aside class="card" aria-label="Quick links">
+          <nav class="toc">
+            <ul>
+              <li><a href="#rules">Core Rules</a></li>
+              <li><a href="#how-to-report">How to report</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#guidelines">Formatting & Spoilers</a></li>
+            </ul>
+          </nav>
+
+          <div style="height:12px"></div>
+
+          <section id="faq">
+            <h4 style="margin:0 0 8px 0">Frequently Asked</h4>
+            <div class="muted" style="font-size:14px">
+              <strong>Q:</strong> Can I post download links? <br>
+              <strong>A:</strong> No — links to piracy will be removed and the poster may be banned.
+            </div>
+            <div style="height:10px"></div>
+            <div class="muted" style="font-size:14px">
+              <strong>Q:</strong> How long to hide spoilers?<br>
+              <strong>A:</strong> At least 2 weeks for major releases; use judgement for older series.
+            </div>
+          </section>
+
+          <div style="height:14px"></div>
+
+          <section id="guidelines">
+            <h4 style="margin:0 0 8px 0">Formatting & Spoilers</h4>
+            <ul>
+              <li>Wrap spoilers: <span class="mono">[spoiler]...[/spoiler]</span> or use the UI spoiler toggle.</li>
+              <li>Mature topics: add a short trigger/content warning before the comment.</li>
+              <li>Keep single-line comments constructive — avoid multi-post rants.</li>
+            </ul>
+          </section>
+
+          <div style="height:14px"></div>
+
+          <section>
+            <h4 style="margin:0 0 8px 0">Contact</h4>
+            <div class="muted">For policy questions or appeals: <a href="mailto:abuse@9anime.example" class="muted">abuse@9anime.example</a></div>
+          </section>
+        </aside>
+
+      </div>
+
+      <footer>
+        By using comments you agree to follow these rules. Moderators reserve the right to change this policy; we will post a dated notice when major changes occur.
+      </footer>
+    </main>
+  </div>
 </body>
 </html>

@@ -1,123 +1,236 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>9anime – Report Page</title>
-<link rel="icon" type="image/webp" href="/favicon.webp" />
-<style>
-    :root {
-        --bg: #060b10;
-        --card: #0c141b;
-        --border: #1e2a33;
-        --text: #e6eef6;
-        --accent: #9300e2;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b0f14">
+  <link rel="icon" href="/favicon.webp" type="image/webp" />
+  <title>9anime — Report</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --muted:#9aa6b2;
+      --accent:#7c3aed;
+      --glass:rgba(255,255,255,0.02);
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
     }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
-    body{background:var(--bg);color:var(--text);padding:28px;}
-    header{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
-    header img{height:46px;}
-    h1{font-size:28px;font-weight:600;margin-bottom:6px;}
-    p{opacity:.85;}
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(180deg,var(--bg),#071018 140%);color:#e6eef6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:32px 20px;}
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+    }
 
-    .wrap{max-width:760px;margin:auto;}
+    .wrap{max-width:980px;width:100%}
+    header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .logo{width:56px;height:56px;flex:0 0 56px;border-radius:12px;overflow:hidden;background:var(--glass);display:flex;align-items:center;justify-content:center}
+    .logo img{width:100%;height:100%;object-fit:contain;display:block}
+    h1{font-size:20px;margin:0}
+    .sub{color:var(--muted);font-size:13px}
 
-    .card{
-        background:var(--card);
-        padding:22px 24px;
-        border:1px solid var(--border);
-        border-radius:12px;
-        margin-bottom:22px;
-    }
-    .card h2{font-size:20px;margin-bottom:12px;color:var(--accent);}
-    label{display:block;margin-bottom:6px;font-weight:600;}
-    input,select,textarea /* dropdown arrow updated */{
-        width:100%;
-        background:#0a1117;
-        border:1px solid var(--border);
-        padding:10px 12px;
-        border-radius:8px;
-        color:var(--text);
-        margin-bottom:16px;
-        font-size:15px;
-    }
-    textarea{min-height:140px;resize:vertical;}
+    main{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:var(--radius);padding:22px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
 
-    button{
-        background:var(--accent);
-        border:none;
-        padding:12px 20px;
-        border-radius:10px;
-        font-size:15px;
-        font-weight:600;
-        cursor:pointer;
-        color:white;
-        transition:.2s;
-        width:100%;
-    }
-    button:hover{opacity:.85;}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr!important}.toc{position:relative;top:0;margin-top:20px;width:100%;display:block}}.toc{position:sticky;top:20px;background:#0c141b;padding:16px 18px;border:1px solid #1e2a33;border-radius:10px;}}
 
-    @media(max-width:600px){
-        body{padding:18px;}
-        h1{font-size:24px;}
+    .card{background:linear-gradient(180deg,transparent,rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .section-title{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .pill{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+
+    .muted{color:var(--muted)}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px}
+
+    /* form */
+    form.report-form{display:flex;flex-direction:column;gap:12px}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type="text"], textarea, select {
+      width:100%;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.04);
+      padding:10px 12px;
+      border-radius:10px;
+      color:inherit;
+      font-size:14px;
+      resize:vertical;
     }
-  select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: none;
-    position: relative;
-    background-color: #0a1117;
-}
-.select-wrap{position:relative;display:flex;align-items:center;}
-.select-wrap::after{content:"▼";position:absolute;right:12px;top:30%;transform:translateY(-70%);pointer-events:none;font-size:12px;opacity:.8;}
-</style>
+    textarea{min-height:120px}
+    .row{display:flex;gap:10px}
+    .col{flex:1;min-width:0}
+
+    .btn{display:inline-block;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#5b21b6);color:white;text-decoration:none;font-weight:600;box-shadow:0 6px 20px rgba(124,58,237,0.12);border:none;cursor:pointer}
+
+    .meta{font-size:13px;color:var(--muted);margin-top:6px}
+
+    /* custom select wrapper with pseudo-element arrow */
+    .select-wrap{
+      position:relative;
+      display:block;
+    }
+    .select-wrap select{
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance:none;
+      padding-right:36px;
+    }
+    .select-wrap::after{
+      /* Custom dropdown icon requested */
+      content: "▼";
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:12px;
+      color:var(--muted);
+      pointer-events:none;
+    }
+
+    /* small helpers and info box */
+    .info{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:13px}
+    .attachments{display:flex;gap:8px;flex-wrap:wrap}
+    .file-pill{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-size:13px}
+
+    footer{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
+
+    a:focus{outline:3px solid rgba(124,58,237,0.18);outline-offset:3px}
+  </style>
 </head>
 <body>
-
-<div class="wrap">
+  <div class="wrap">
     <header>
-        <img src="/9anime.png" alt="9anime Logo">
-        <div>
-            <h1>Report Content</h1>
-            <p>Use this form to report comments, users, spoilers, harassment, or any policy violation.</p>
-        </div>
+      <div class="logo" aria-hidden="true">
+        <img src="/9anime.png" alt="9anime logo" />
+      </div>
+      <div>
+        <h1>9anime — Report an issue</h1>
+        <div class="sub">Use this form to report rule-breaking comments, piracy links, spoilers, or other problems</div>
+      </div>
     </header>
 
-    <div class="card">
-        <h2>Submit a Report</h2>
-        <form>
-<label>Type of Issue</label>
-<div class="select-wrap">
-    <select>
-        <option>Spam / Advertising</option>
-        <option>Harassment or Abuse</option>
-        <option>Hate Speech / Toxic Behavior</option>
-        <option>NSFW / Mature Content Without Warning</option>
-        <option>Piracy Links</option>
-        <option>Major Spoilers</option>
-        <option>Impersonation</option>
-        <option>Other</option>
-    </select>
-</div>
+    <main>
+      <div class="grid">
+        <div>
+          <section class="card" id="report">
+            <div class="section-title">
+              <span class="pill">Quick Report</span>
+            </div>
 
+            <form class="report-form" action="/submit-report" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
+              <div>
+                <label for="page">Page / URL (optional)</label>
+                <input id="page" name="page" type="text" placeholder="/watch/one-piece-100?ep=2143" />
+              </div>
 
-            <label>Page / Episode URL</label>
-            <input type="text" placeholder="https://9anime.to/..." />
+              <div>
+                <label for="type">What are you reporting?</label>
+                <div class="select-wrap">
+                  <select id="type" name="type">
+                    <option value="harassment">Harassment / Hate</option>
+                    <option value="piracy">Piracy link</option>
+                    <option value="spoiler">Spoiler without warning</option>
+                    <option value="personal">Doxxing / Personal data</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
 
-            <label>Describe the Issue</label>
-            <textarea placeholder="Explain what happened and why it violates the rules..."></textarea>
+              <div class="row">
+                <div class="col">
+                  <label for="severity">Severity</label>
+                  <div class="select-wrap">
+                    <select id="severity" name="severity">
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
+                    </select>
+                  </div>
+                </div>
 
-            <button type="submit">Submit Report</button>
-        </form>
-    </div>
+                <div class="col">
+                  <label for="when">When did this happen?</label>
+                  <input id="when" name="when" type="text" placeholder="e.g. Nov 22, 2025 or 'a few minutes ago'" />
+                </div>
+              </div>
 
-    <div class="card">
-        <h2>Contact (Manual Review)</h2>
-        <p>If your report needs a manual review or is urgent, email:</p>
-        <p style="margin-top:8px;font-size:15px;font-weight:600;">abuse@9anime.example</p>
-    </div>
-</div>
+              <div>
+                <label for="details">Details (please be specific)</label>
+                <textarea id="details" name="details" placeholder="Provide a short reason and any relevant comment text, user names or timestamps."></textarea>
+              </div>
 
+              <div>
+                <label>Attachments (screenshots)</label>
+                <div class="info">Screenshots help moderators. Allowed: JPG/PNG. Max 3 files.</div>
+                <div class="attachments" style="margin-top:8px">
+                  <label class="file-pill"><input type="file" name="attachment1" accept="image/*" /></label>
+                  <label class="file-pill"><input type="file" name="attachment2" accept="image/*" /></label>
+                  <label class="file-pill"><input type="file" name="attachment3" accept="image/*" /></label>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+                <button type="submit" class="btn">Send report</button>
+                <div class="meta">We review reports within 24–72 hours for non-emergency items.</div>
+              </div>
+
+            </form>
+
+            <p class="meta" style="margin-top:12px">Last updated: <span class="mono">Nov 23, 2025</span></p>
+          </section>
+
+          <section class="card" style="margin-top:14px" id="tips">
+            <div class="section-title"><span class="pill">Reporting tips</span></div>
+            <ul>
+              <li>Include the exact comment text or a screenshot when possible.</li>
+              <li>Provide a timestamp or episode number if the comment is on a video page.</li>
+              <li>For piracy: paste the exact external link, do not link to pirated files in the form itself.</li>
+            </ul>
+          </section>
+        </div>
+
+        <aside class="card" aria-label="Quick links">
+          <nav class="toc">
+            <ul>
+              <li><a href="#report">Report form</a></li>
+              <li><a href="#tips">Reporting tips</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div style="height:12px"></div>
+
+          <section id="faq">
+            <h4 style="margin:0 0 8px 0">FAQ</h4>
+            <div class="muted" style="font-size:14px">
+              <strong>Q:</strong> Will my report be private?<br>
+              <strong>A:</strong> Yes — reports are only visible to moderators and admins.
+            </div>
+            <div style="height:10px"></div>
+            <div class="muted" style="font-size:14px">
+              <strong>Q:</strong> What if someone is threatening me?<br>
+              <strong>A:</strong> If you are in immediate danger contact local authorities first.
+            </div>
+          </section>
+
+          <div style="height:14px"></div>
+
+          <section id="contact">
+            <h4 style="margin:0 0 8px 0">Contact</h4>
+            <div class="muted">For appeals or follow-up: <a href="mailto:abuse@9anime.example" class="muted">abuse@9anime.example</a></div>
+          </section>
+        </aside>
+
+      </div>
+
+      <footer>
+        By sending a report you agree to provide accurate information. Moderators reserve the right to act on reports per site rules.
+      </footer>
+    <!-- main content closed -->
+</main>
+  </div>
 </body>
 </html>

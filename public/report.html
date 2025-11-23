@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>9anime – Report Page</title>
+<link rel="icon" type="image/webp" href="/favicon.webp" />
+<style>
+    :root {
+        --bg: #060b10;
+        --card: #0c141b;
+        --border: #1e2a33;
+        --text: #e6eef6;
+        --accent: #9300e2;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+    body{background:var(--bg);color:var(--text);padding:28px;}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+    header img{height:46px;}
+    h1{font-size:28px;font-weight:600;margin-bottom:6px;}
+    p{opacity:.85;}
+
+    .wrap{max-width:760px;margin:auto;}
+
+    .card{
+        background:var(--card);
+        padding:22px 24px;
+        border:1px solid var(--border);
+        border-radius:12px;
+        margin-bottom:22px;
+    }
+    .card h2{font-size:20px;margin-bottom:12px;color:var(--accent);}
+    label{display:block;margin-bottom:6px;font-weight:600;}
+    input,select,textarea /* dropdown arrow updated */{
+        width:100%;
+        background:#0a1117;
+        border:1px solid var(--border);
+        padding:10px 12px;
+        border-radius:8px;
+        color:var(--text);
+        margin-bottom:16px;
+        font-size:15px;
+    }
+    textarea{min-height:140px;resize:vertical;}
+
+    button{
+        background:var(--accent);
+        border:none;
+        padding:12px 20px;
+        border-radius:10px;
+        font-size:15px;
+        font-weight:600;
+        cursor:pointer;
+        color:white;
+        transition:.2s;
+        width:100%;
+    }
+    button:hover{opacity:.85;}
+
+    @media(max-width:600px){
+        body{padding:18px;}
+        h1{font-size:24px;}
+    }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: none;
+    position: relative;
+    background-color: #0a1117;
+}
+.select-wrap{position:relative;}
+.select-wrap::after{content:"▼";position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:12px;opacity:.8;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+    <header>
+        <img src="/9anime.png" alt="9anime Logo">
+        <div>
+            <h1>Report Content</h1>
+            <p>Use this form to report comments, users, spoilers, harassment, or any policy violation.</p>
+        </div>
+    </header>
+
+    <div class="card">
+        <h2>Submit a Report</h2>
+        <form>
+            <label>Type of Issue</label>
+            <select>
+                <option>Spam / Advertising</option>
+                <option>Harassment or Abuse</option>
+                <option>Hate Speech / Toxic Behavior</option>
+                <option>NSFW / Mature Content Without Warning</option>
+                <option>Piracy Links</option>
+                <option>Major Spoilers</option>
+                <option>Impersonation</option>
+                <option>Other</option>
+            </select>
+
+            <label>Page / Episode URL</label>
+            <input type="text" placeholder="https://9anime.to/..." />
+
+            <label>Describe the Issue</label>
+            <textarea placeholder="Explain what happened and why it violates the rules..."></textarea>
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Contact (Manual Review)</h2>
+        <p>If your report needs a manual review or is urgent, email:</p>
+        <p style="margin-top:8px;font-size:15px;font-weight:600;">abuse@9anime.example</p>
+    </div>
+</div>
+
+</body>
+</html>

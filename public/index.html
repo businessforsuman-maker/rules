@@ -18,7 +18,7 @@
       color-scheme: dark;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{margin:0;background:linear-gradient(180deg,var(--bg),#071018 140%);color:#e6eef6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:32px 20px;}
     body{
       margin:0;
       background:linear-gradient(180deg,var(--bg),#071018 140%);
@@ -41,7 +41,7 @@
     main{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:var(--radius);padding:22px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
 
     .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
-    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+    @media (max-width:880px){.grid{grid-template-columns:1fr!important}.toc{position:relative;top:0;margin-top:20px;width:100%;display:block}}.toc{position:sticky;top:20px;background:#0c141b;padding:16px 18px;border:1px solid #1e2a33;border-radius:10px;}}
 
     .card{background:linear-gradient(180deg,transparent,rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
     .rules{line-height:1.5}
@@ -198,7 +198,8 @@
       <footer>
         By using comments you agree to follow these rules. Moderators reserve the right to change this policy; we will post a dated notice when major changes occur.
       </footer>
-    </main>
+    <!-- main content closed -->
+</main>
   </div>
 </body>
 </html>

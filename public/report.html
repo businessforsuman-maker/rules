@@ -97,6 +97,13 @@ select option {
       color:var(--muted);
       pointer-events:none;
     }
+    /* table of contents */
+    nav.toc{position:sticky;top:20px}
+    @media (max-width:880px){nav.toc{position:static}}
+    nav.toc ul{list-style:none;padding:0;margin:0}
+    nav.toc li{margin:8px 0}
+    nav.toc a{color:var(--muted);text-decoration:none;font-size:13px}
+    nav.toc a:hover{color:var(--accent)}
 
     /* small helpers and info box */
     .info{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-size:13px}
